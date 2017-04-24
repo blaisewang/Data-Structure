@@ -10,36 +10,36 @@
 using namespace std;
 
 template<class T>
-class graphChain: public chain<T>
-{
+class graphChain : public chain<T> {
 public:
-	T* eraseElement(int theVertex)
-	{ // Delete node with element == theVertex. Return pointer to
-	  // deleted element. Return NULL if no matching element.
-		chainNode<T> *current = this->firstNode, *trail = NULL; // one behind current
+    T *eraseElement(int theVertex) { // Delete node with element == theVertex. Return pointer to
+        // deleted element. Return NULL if no matching element.
+        chainNode<T> *current = this->firstNode, *trail = NULL; // one behind current
 
-		// search for match
-		while (current != NULL && current->element != theVertex)
-		{
-			trail = current;
-			current = current->next;
-		}
+        // search for match
+        while (current != NULL && current->element != theVertex) {
+            trail = current;
+            current = current->next;
+        }
 
-		if (current == NULL) // no match
-			return NULL;
+        if (current == NULL) { // no match
+            return NULL;
+        }
 
-		// match found in node current
-		T* theElement = &current->element; // save matching element
+        // match found in node current
+        T *theElement = &current->element; // save matching element
 
-		// remove current from chain
-		if (trail != NULL)
-			trail->next = current->next;
-		else
-			this->firstNode = current->next; // current is first node
+        // remove current from chain
+        if (trail != NULL) {
+            trail->next = current->next;
+        } else {
+            this->firstNode = current->next; // current is first node
+        }
 
-		delete current;
-		this->listSize--;
-		return theElement;
-	}
+        delete current;
+        this->listSize--;
+        return theElement;
+    }
 };
+
 #endif

@@ -8,18 +8,15 @@
 
 #include "dictionary.h"
 
-using namespace std;
-
 template<class K, class E>
-class bsTree: public dictionary<K, E>
-{
+class bsTree : public dictionary<K, E> {
 public:
-	virtual void ascend() = 0;
-	virtual ~bsTree() // there must have non-virtual destructor if the class has virtual method
-	{
-	}
-	// output in ascending order of key
+    virtual void ascend() = 0;
+
+    virtual ~bsTree() // there must have non-virtual destructor if the class has virtual method
+    {
+    }
+    // output in ascending order of key
 };
 
 #endif
-

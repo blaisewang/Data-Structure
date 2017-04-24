@@ -17,201 +17,193 @@
 using namespace std;
 
 template<class T>
-class arrayList: public linearList<T>
-{
+class arrayList : public linearList<T> {
 public:
-	// constructor, copy constructor and destructor
-	arrayList(int initialCapacity = 10);
-	arrayList(const arrayList<T>&);
-	~arrayList()
-	{
-		delete[] element;
-	}
+    // constructor, copy constructor and destructor
+    arrayList(int initialCapacity = 10);
 
-	// ADT methods
-	bool empty() const
-	{
-		return listSize == 0;
-	}
-	int size() const
-	{
-		return listSize;
-	}
-	T& get(int theIndex) const;
-	int indexOf(const T& theElement) const;
-	void erase(int theIndex);
-	void insert(int theIndex, const T& theElement);
-	void output(ostream& out) const;
-	bool operator==(const arrayList<T>& x) const;
-	void clear();
-	void reverse();
+    arrayList(const arrayList<T> &);
 
-	// additional method
-	int capacity() const
-	{
-		return arrayLength;
-	}
+    ~arrayList() {
+        delete[] element;
+    }
+
+    // ADT methods
+    bool empty() const {
+        return listSize == 0;
+    }
+
+    int size() const {
+        return listSize;
+    }
+
+    T &get(int theIndex) const;
+
+    int indexOf(const T &theElement) const;
+
+    void erase(int theIndex);
+
+    void insert(int theIndex, const T &theElement);
+
+    void output(ostream &out) const;
+
+    bool operator==(const arrayList<T> &x) const;
+
+    void clear();
+
+    void reverse();
+
+    // additional method
+    int capacity() const {
+        return arrayLength;
+    }
 
 protected:
-	void checkIndex(int theIndex) const;
-	// throw illegalIndex if theIndex invalid
-	T* element;            // 1D array to hold list elements
-	int arrayLength;       // capacity of the 1D array
-	int listSize;          // number of elements in list
+    void checkIndex(int theIndex) const;
+
+    // throw illegalIndex if theIndex invalid
+    T *element;            // 1D array to hold list elements
+    int arrayLength;       // capacity of the 1D array
+    int listSize;          // number of elements in list
 };
 
 template<class T>
-arrayList<T>::arrayList(int initialCapacity)
-{          // Constructor.
-	if (initialCapacity < 1)
-	{
-		ostringstream s;
-		s << "Initial capacity = " << initialCapacity << " Must be > 0";
-		throw illegalParameterValue(s.str());
-	}
-	arrayLength = initialCapacity;
-	element = new T[arrayLength];
-	listSize = 0;
+arrayList<T>::arrayList(int initialCapacity) {          // Constructor.
+    if (initialCapacity < 1) {
+        ostringstream s;
+        s << "Initial capacity = " << initialCapacity << " Must be > 0";
+        throw illegalParameterValue(s.str());
+    }
+    arrayLength = initialCapacity;
+    element = new T[arrayLength];
+    listSize = 0;
 }
 
 template<class T>
-arrayList<T>::arrayList(const arrayList<T>& theList)
-{          // Copy constructor.
-	arrayLength = theList.arrayLength;
-	listSize = theList.listSize;
-	element = new T[arrayLength];
-	copy(theList.element, theList.element + listSize, element);
+arrayList<T>::arrayList(const arrayList<T> &theList) {          // Copy constructor.
+    arrayLength = theList.arrayLength;
+    listSize = theList.listSize;
+    element = new T[arrayLength];
+    copy(theList.element, theList.element + listSize, element);
 }
 
 template<class T>
-void arrayList<T>::checkIndex(int theIndex) const
-{          // Verify that theIndex is between 0 and listSize - 1.
-	if (theIndex < 0 || theIndex >= listSize)
-	{
-		ostringstream s;
-		s << "index = " << theIndex << " size = " << listSize;
-		throw illegalIndex(s.str());
-	}
+void arrayList<T>::checkIndex(int theIndex) const {          // Verify that theIndex is between 0 and listSize - 1.
+    if (theIndex < 0 || theIndex >= listSize) {
+        ostringstream s;
+        s << "index = " << theIndex << " size = " << listSize;
+        throw illegalIndex(s.str());
+    }
 
 }
 
 template<class T>
-T& arrayList<T>::get(int theIndex) const
-{          // Return element whose index is theIndex.
+T &arrayList<T>::get(int theIndex) const {          // Return element whose index is theIndex.
 // Throw illegalIndex exception if no such element.
-	checkIndex(theIndex);
-	return element[theIndex];
+    checkIndex(theIndex);
+    return element[theIndex];
 }
 
 template<class T>
-int arrayList<T>::indexOf(const T& theElement) const
-{ // Return index of first occurrence of theElement.
+int arrayList<T>::indexOf(const T &theElement) const { // Return index of first occurrence of theElement.
 // Return -1 if theElement not in list.
 
-	// search for theElement
-	int theIndex = (int) (find(element, element + listSize, theElement)
-			- element);
+    // search for theElement
+    int theIndex = (int) (find(element, element + listSize, theElement)
+            - element);
 
-	// check if theElement was found
-	if (theIndex == listSize)
-		// not found
-		return -1;
-	else
-		return theIndex;
+    // check if theElement was found
+    if (theIndex == listSize) {
+        // not found
+        return -1;
+    } else {
+        return theIndex;
+    }
 }
 
 template<class T>
-void arrayList<T>::erase(int theIndex)
-{ // Delete the element whose index is theIndex.
+void arrayList<T>::erase(int theIndex) { // Delete the element whose index is theIndex.
 // Throw illegalIndex exception if no such element.
-	checkIndex(theIndex);
+    checkIndex(theIndex);
 
-	// valid index, shift elements with higher index
-	copy(element + theIndex + 1, element + listSize, element + theIndex);
+    // valid index, shift elements with higher index
+    copy(element + theIndex + 1, element + listSize, element + theIndex);
 
-	element[--listSize].~T(); // invoke destructor
+    element[--listSize].~T(); // invoke destructor
 }
 
 template<class T>
-void arrayList<T>::insert(int theIndex, const T& theElement)
-{ // Insert theElement so that its index is theIndex.
-	if (theIndex < 0 || theIndex > listSize)
-	{ // invalid index
-		ostringstream s;
-		s << "index = " << theIndex << " size = " << listSize;
-		throw illegalIndex(s.str());
-	}
+void arrayList<T>::insert(int theIndex, const T &theElement) { // Insert theElement so that its index is theIndex.
+    if (theIndex < 0 || theIndex > listSize) { // invalid index
+        ostringstream s;
+        s << "index = " << theIndex << " size = " << listSize;
+        throw illegalIndex(s.str());
+    }
 
-	// valid index, make sure we have space
-	if (listSize == arrayLength)
-	{ // no space, double capacity
-		changeLength1D(element, arrayLength, 2 * arrayLength);
-		arrayLength *= 2;
-	}
+    // valid index, make sure we have space
+    if (listSize == arrayLength) { // no space, double capacity
+        changeLength1D(element, arrayLength, 2 * arrayLength);
+        arrayLength *= 2;
+    }
 
-	// shift elements right one position
-	copy_backward(element + theIndex, element + listSize,
-			element + listSize + 1);
+    // shift elements right one position
+    copy_backward(element + theIndex, element + listSize, element + listSize + 1);
 
-	element[theIndex] = theElement;
+    element[theIndex] = theElement;
 
-	listSize++;
+    listSize++;
 }
 
 template<class T>
-void arrayList<T>::output(ostream& out) const
-{ // Put the list into the stream out.
-	copy(element, element + listSize, ostream_iterator<T>(cout, "  "));
+void arrayList<T>::output(ostream &out) const { // Put the list into the stream out.
+    copy(element, element + listSize, ostream_iterator<T>(cout, "  "));
 }
 
 // overload <<
 template<class T>
-ostream& operator<<(ostream& out, const arrayList<T>& x)
-{
-	x.output(out);
-	return out;
+ostream &operator<<(ostream &out, const arrayList<T> &x) {
+    x.output(out);
+    return out;
 }
 
 template<class T>
-bool arrayList<T>::operator==(const arrayList<T>& x) const
-{ // Return true iff the two lists are not identical.
+bool arrayList<T>::operator==(const arrayList<T> &x) const { // Return true iff the two lists are not identical.
 
-	if (listSize != x.listSize)
-		return false;
+    if (listSize != x.listSize) {
+        return false;
+    }
 
-	// check the elements
-	for (int i = 0; i < listSize; i++)
-		if (element[i] != x.element[i])
-			return false;
+    // check the elements
+    for (int i = 0; i < listSize; i++) {
+        if (element[i] != x.element[i]) {
+            return false;
+        }
+    }
 
-	return true;
+    return true;
 }
 
 template<class T>
-void arrayList<T>::clear()
-{
-	if (listSize != 0)
-	{
-		for (int i = 0; i < listSize; i++)
-			element[i].~T();
-		listSize = 0;
-	}
+void arrayList<T>::clear() {
+    if (listSize != 0) {
+        for (int i = 0; i < listSize; i++) {
+            element[i].~T();
+        }
+        listSize = 0;
+    }
 }
 
 template<class T>
-void arrayList<T>::reverse()
-{
-	if (listSize != 0)
-	{
-		int halfCount = listSize / 2;
-		T tempVariable;
-		for (int i = 0; i < halfCount; i++)
-		{
-			tempVariable = element[i];
-			element[i] = element[listSize - i - 1];
-			element[listSize - i - 1] = tempVariable;
-		}
-	}
+void arrayList<T>::reverse() {
+    if (listSize != 0) {
+        int halfCount = listSize / 2;
+        T tempVariable;
+        for (int i = 0; i < halfCount; i++) {
+            tempVariable = element[i];
+            element[i] = element[listSize - i - 1];
+            element[listSize - i - 1] = tempVariable;
+        }
+    }
 }
 
 #endif

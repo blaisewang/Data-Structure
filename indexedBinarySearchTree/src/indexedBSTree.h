@@ -11,16 +11,17 @@
 using namespace std;
 
 template<class K, class E>
-class indexedBSTree: public bsTree<K, E>
-{
+class indexedBSTree : public bsTree<K, E> {
 public:
-	virtual ~indexedBSTree()
-	{
-	}
-	virtual pair<const K, E>* get(int) const = 0;
-	// return pointer to pair with given index
-	virtual void indexDelete(int) = 0;
-	// delete pair with given index
+    virtual ~indexedBSTree() {
+    }
+
+    virtual pair<const K, E> *get(int) const = 0;
+
+    // return pointer to pair with given index
+    virtual void indexDelete(int) = 0;
+    // delete pair with given index
 };
+
 #endif
 

@@ -2,184 +2,175 @@
 
 #ifndef myExceptions_
 #define myExceptions_
+
 #include <string>
 
 using namespace std;
 
 // illegal parameter value
-class illegalParameterValue
-{
+class illegalParameterValue {
 public:
-	illegalParameterValue(string theMessage = "Illegal parameter value")
-	{
-		message = theMessage;
-	}
-	void outputMessage()
-	{
-		cout << message << endl;
-	}
+    illegalParameterValue(string theMessage = "Illegal parameter value") {
+        message = theMessage;
+    }
+
+    void outputMessage() {
+        cout << message << endl;
+    }
+
 private:
-	string message;
+    string message;
 };
 
 // illegal input data
-class illegalInputData
-{
+class illegalInputData {
 public:
-	illegalInputData(string theMessage = "Illegal data input")
-	{
-		message = theMessage;
-	}
-	void outputMessage()
-	{
-		cout << message << endl;
-	}
+    illegalInputData(string theMessage = "Illegal data input") {
+        message = theMessage;
+    }
+
+    void outputMessage() {
+        cout << message << endl;
+    }
+
 private:
-	string message;
+    string message;
 };
 
 // illegal index
-class illegalIndex
-{
+class illegalIndex {
 public:
-	illegalIndex(string theMessage = "Illegal index")
-	{
-		message = theMessage;
-	}
-	void outputMessage()
-	{
-		cout << message << endl;
-	}
+    illegalIndex(string theMessage = "Illegal index") {
+        message = theMessage;
+    }
+
+    void outputMessage() {
+        cout << message << endl;
+    }
+
 private:
-	string message;
+    string message;
 };
 
 // matrix index out of bounds
-class matrixIndexOutOfBounds
-{
+class matrixIndexOutOfBounds {
 public:
-	matrixIndexOutOfBounds(string theMessage = "Matrix index out of bounds")
-	{
-		message = theMessage;
-	}
-	void outputMessage()
-	{
-		cout << message << endl;
-	}
+    matrixIndexOutOfBounds(string theMessage = "Matrix index out of bounds") {
+        message = theMessage;
+    }
+
+    void outputMessage() {
+        cout << message << endl;
+    }
+
 private:
-	string message;
+    string message;
 };
 
 // matrix size mismatch
-class matrixSizeMismatch
-{
+class matrixSizeMismatch {
 public:
-	matrixSizeMismatch(string theMessage =
-			"The size of the two matrics doesn't match")
-	{
-		message = theMessage;
-	}
-	void outputMessage()
-	{
-		cout << message << endl;
-	}
+    matrixSizeMismatch(string theMessage =
+    "The size of the two matrics doesn't match") {
+        message = theMessage;
+    }
+
+    void outputMessage() {
+        cout << message << endl;
+    }
+
 private:
-	string message;
+    string message;
 };
 
 // stack is empty
-class stackEmpty
-{
+class stackEmpty {
 public:
-	stackEmpty(string theMessage = "Invalid operation on empty stack")
-	{
-		message = theMessage;
-	}
-	void outputMessage()
-	{
-		cout << message << endl;
-	}
+    stackEmpty(string theMessage = "Invalid operation on empty stack") {
+        message = theMessage;
+    }
+
+    void outputMessage() {
+        cout << message << endl;
+    }
+
 private:
-	string message;
+    string message;
 };
 
 // queue is empty
-class queueEmpty
-{
+class queueEmpty {
 public:
-	queueEmpty(string theMessage = "Invalid operation on empty queue")
-	{
-		message = theMessage;
-	}
-	void outputMessage()
-	{
-		cout << message << endl;
-	}
+    queueEmpty(string theMessage = "Invalid operation on empty queue") {
+        message = theMessage;
+    }
+
+    void outputMessage() {
+        cout << message << endl;
+    }
+
 private:
-	string message;
+    string message;
 };
 
 // tree is empty
-class emptyTree
-{
+class emptyTree {
 public:
-	emptyTree(string theMessage = "Invalid operation on empty tree")
-	{
-		message = theMessage;
-	}
-	void outputMessage()
-	{
-		cout << message << endl;
-	}
+    emptyTree(string theMessage = "Invalid operation on empty tree") {
+        message = theMessage;
+    }
+
+    void outputMessage() {
+        cout << message << endl;
+    }
+
 private:
-	string message;
+    string message;
 };
 
 // hash table is full
-class hashTableFull
-{
+class hashTableFull {
 public:
-	hashTableFull(string theMessage = "The hash table is full")
-	{
-		message = theMessage;
-	}
-	void outputMessage()
-	{
-		cout << message << endl;
-	}
+    hashTableFull(string theMessage = "The hash table is full") {
+        message = theMessage;
+    }
+
+    void outputMessage() {
+        cout << message << endl;
+    }
+
 private:
-	string message;
+    string message;
 };
 
 // edge weight undefined
-class undefinedEdgeWeight
-{
+class undefinedEdgeWeight {
 public:
-	undefinedEdgeWeight(string theMessage = "No edge weights defined")
-	{
-		message = theMessage;
-	}
-	void outputMessage()
-	{
-		cout << message << endl;
-	}
+    undefinedEdgeWeight(string theMessage = "No edge weights defined") {
+        message = theMessage;
+    }
+
+    void outputMessage() {
+        cout << message << endl;
+    }
+
 private:
-	string message;
+    string message;
 };
 
 // method undefined
-class undefinedMethod
-{
+class undefinedMethod {
 public:
-	undefinedMethod(string theMessage = "This method is undefined")
-	{
-		message = theMessage;
-	}
-	void outputMessage()
-	{
-		cout << message << endl;
-	}
+    undefinedMethod(string theMessage = "This method is undefined") {
+        message = theMessage;
+    }
+
+    void outputMessage() {
+        cout << message << endl;
+    }
+
 private:
-	string message;
+    string message;
 };
+
 #endif

@@ -12,13 +12,13 @@ using namespace std;
 
 int main(int argc, const char * argv[])
 {
-	currency g, h;
+	currency a, b;
 
 	// Try out both forms of assignment and outPut
-	g = -99;
-	h = 9.72;
-	cout << "Currency g result is " << g << endl;
-	cout << "Currency h result is " << h << endl;
+	a = -99;
+	b = 9.72;
+	cout << "Currency a result is " << a << endl;
+	cout << "Currency b result is " << b << endl;
 
 	return 0;
 }

@@ -11,39 +11,37 @@
 
 using namespace std;
 
-int main()
-{
-	arrayQueue<int> a(4), b(5), c(10);
+int main() {
+    arrayQueue<int> a(4), b(5), c(10);
 
-	a.push(1);
-	a.push(3);
-	a.push(1);
-	a.push(3);
-	a.push(1);
-	a.push(3);
-	a.push(1);
-	a.push(3);
-	a.push(1);
-	a.push(3);
-	a.push(1);
-	a.push(3);
-	a.push(1);
-	a.push(3);
-	a.push(1);
-	a.push(3);
+    a.push(1);
+    a.push(3);
+    a.push(1);
+    a.push(3);
+    a.push(1);
+    a.push(3);
+    a.push(1);
+    a.push(3);
+    a.push(1);
+    a.push(3);
+    a.push(1);
+    a.push(3);
+    a.push(1);
+    a.push(3);
+    a.push(1);
+    a.push(3);
 
-	b.push(2);
-	b.push(4);
+    b.push(2);
+    b.push(4);
 
 
-	//c.merge(a, b);
+    //c.merge(a, b);
 
-	while (!a.empty())
-	{
-		cout << "Queue front is " << a.front() << endl;
-		a.pop();
-		cout << "Popped front element" << endl;
-	}
+    while (!a.empty()) {
+        cout << "Queue front is " << a.front() << endl;
+        a.pop();
+        cout << "Popped front element" << endl;
+    }
 
-	return 0;
+    return 0;
 }

@@ -172,8 +172,7 @@ private:
 class undefinedMethod
 {
 public:
-	undefinedMethod(string theMessage = "This method is undefined")
-	{
+	undefinedMethod(string theMessage = "This method is undefined") {
 		message = theMessage;
 	}
 	void outputMessage()

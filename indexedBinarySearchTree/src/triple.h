@@ -4,16 +4,14 @@
 using namespace std;
 
 template<class K, class E>
-class triple
-{
+class triple {
 public:
-	triple(const pair<const K, E> thePair) :
-			thePair(thePair)
-	{
-		leftSize = 0;
-	}
-	int leftSize;
-	pair<K, E> thePair;
+    triple(const pair<const K, E> thePair) : thePair(thePair) {
+        leftSize = 0;
+    }
+
+    int leftSize;
+    pair<K, E> thePair;
 };
 
 #endif
